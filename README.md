@@ -8,3 +8,4 @@
 
 
 多數參考網路！只改了CNN裡的模型
+https://flag-editors.medium.com/%E5%88%A9%E7%94%A8pytorch%E5%BB%BA%E6%A7%8Bmnist%E6%95%B8%E5%AD%97%E5%88%86%E9%A1%9E%E5%99%A8-e200e5bf804e
