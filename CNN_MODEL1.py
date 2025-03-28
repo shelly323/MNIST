@@ -16,19 +16,25 @@ print('Number of samples in test_data:', len(test_data))
 class CNN(torch.nn.Module):
     def __init__(self):
         super(CNN, self).__init__()
-        self.conv1 = nn.Conv2d(1, 16, kernel_size=3)
+        self.conv1 = nn.Conv2d(1, 64, kernel_size=3)
+        self.conv2 = nn.Conv2d(64, 128, kernel_size=3)
+        self.conv3 = nn.Conv2d(128, 256, kernel_size=3)
         self.maxpool = nn.MaxPool2d(kernel_size=(2,2))
-        self.lin1 = nn.Linear(16*13*13, 64)
-        self.out = nn.Linear(64, 10)
-        self.dropout = nn.Dropout(0.3)
+        self.lin1 = nn.Linear(256 * 5 * 5, 256)
+        self.out = nn.Linear(256, 10)
     
     def forward(self, x):
         x = self.conv1(x)
         x = nn.functional.relu(x)
-        x = self.maxpool(x)
         #print(x.shape)
+        x = self.conv2(x)
         x = nn.functional.relu(x)
-        #print(x.shape)
+        x = self.maxpool(x)
+        x = nn.functional.relu(x)
+        x = self.conv3(x)
+        x = nn.functional.relu(x)
+        x = self.maxpool(x)
+        x = nn.functional.relu(x)
         x = x.flatten(start_dim=1)
         x = self.lin1(x)
         x = nn.functional.relu(x)
@@ -42,7 +48,7 @@ def prepare_images(xt):
 
 # 建立 CNN 模型
 model = CNN()
-epochs = 200
+epochs = 100
 batch_size = 500
 lr = 1e-3
 opt = torch.optim.Adam(params=model.parameters(), lr=lr)
