@@ -5,3 +5,6 @@
 ![image](https://github.com/user-attachments/assets/e904dd49-3af0-420e-8cc9-36f80a9d383b)
 ## **accuracy**
 ![image](https://github.com/user-attachments/assets/c7252832-d67a-4871-9b13-ba94b4a32f3d)
+
+
+多數參考網路！只改了CNN裡的模型
