@@ -26,15 +26,17 @@ class CNN(torch.nn.Module):
     def forward(self, x):
         x = self.conv1(x)
         x = nn.functional.relu(x)
-        #print(x.shape)
+        
         x = self.conv2(x)
         x = nn.functional.relu(x)
         x = self.maxpool(x)
         x = nn.functional.relu(x)
+        
         x = self.conv3(x)
         x = nn.functional.relu(x)
         x = self.maxpool(x)
         x = nn.functional.relu(x)
+        
         x = x.flatten(start_dim=1)
         x = self.lin1(x)
         x = nn.functional.relu(x)
